@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌸 FocusFlow – Cute Tracker 🌸</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('tasks')">📝 Tasks</div>
+    <div class="tab" onclick="switchTab('habits')">✨ Habits</div>
+    <div class="tab" onclick="switchTab('weedTracker')">🌿 Weed Tracker</div>
+    <div class="tab" onclick="switchTab('finances')">💰 Finances</div>
+  </div>
+
+  <div id="tasks" class="tab-content active">
+    <h2>🌸 Daily Tasks 🌸</h2>
+    <div class="progress-bar"><div class="progress-fill" id="taskProgress"></div></div>
+    <div class="input-section">
+      <input type="text" id="newTask" placeholder="✨ New task..." />
+      <input type="time" id="taskTime" />
+      <button onclick="addTask()">Add ✨</button>
+    </div>
+    <ul id="taskList"></ul>
+  </div>
+
+  <div id="habits" class="tab-content">
+    <h2>✨ Habits ✨</h2>
+    <div class="progress-bar"><div class="progress-fill" id="habitProgress"></div></div>
+    <div class="input-section">
+      <select id="habitTimeframe" onchange="renderHabits()">
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+        <option value="monthly">Monthly</option>
+      </select>
+    </div>
+    <div class="input-section">
+      <input type="text" id="newGoodHabit" placeholder="✨ New good habit..." />
+      <button onclick="addHabit('good')">Add Good ✨</button>
+    </div>
+    <div class="input-section">
+      <input type="text" id="newBadHabit" placeholder="💔 New bad habit..." />
+      <button onclick="addHabit('bad')">Add Bad 💔</button>
+    </div>
+    <h3>✨ Good Habits (<span id="habitType">Daily</span>) ✨</h3>
+    <ul id="goodHabitList"></ul>
+    <h3>💔 Bad Habits (<span id="habitType">Daily</span>) 💔</h3>
+    <ul id="badHabitList"></ul>
+  </div>
+
+  <div id="weedTracker" class="tab-content">
+    <h2>🌿 Weed Tracker – 30 Days 🌿</h2>
+    <button onclick="resetDiscipline()">Reset Weed Tracker 🔄</button>
+    <div class="progress-bar"><div class="progress-fill" id="disciplineProgress"></div></div>
+    <ul id="disciplineList"></ul>
+  </div>
+
+  <div id="finances" class="tab-content">
+    <h2>💰 Finances 💰</h2>
+    <div class="input-section">
+      <input type="number" id="incomeInput" placeholder="Income 💰" />
+      <button onclick="addFinance('income')">Add Income 💰</button>
+    </div>
+    <div class="input-section">
+      <input type="number" id="expenseInput" placeholder="Expense 💸" />
+      <button onclick="addFinance('expense')">Add Expense 💸</button>
+    </div>
+    <ul id="financeList"></ul>
+    <h3>Total: $<span id="financeTotal">0</span> 💰</h3>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
